@@ -109,3 +109,9 @@ pauseBtn.addEventListener("click", () => {
 });
 
 restartBtn.addEventListener("click", startMinCountdown);
+
+// Bonus
+
+// setInterval(() => {
+//   window.alert("Hallo Helmut 👋🏼");
+// }, 5000);
