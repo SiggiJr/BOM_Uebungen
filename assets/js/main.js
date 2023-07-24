@@ -77,22 +77,21 @@ const timerOutput = document.querySelector("#time");
 const pauseBtn = document.querySelector(".pause_btn");
 const restartBtn = document.querySelector(".restart_btn");
 
-let minutesAsDate;
 const oneHour = 1 * 60 * 60 * 1000;
 let countdownInterval;
-let minutes = 0;
+let minutes;
 let timerRunning = false;
 
 const startMinCountdown = (event) => {
   if (event.target.dataset.btn === "start") {
     minutes = Number(timerInput.value) * 60 * 1000;
   }
-  minutesAsDate = new Date(minutes - oneHour);
   if (!timerRunning) {
+    timerInput.value = "";
     timerRunning = true;
     countdownInterval = setInterval(() => {
+      const minutesAsDate = new Date(minutes - oneHour);
       timerOutput.textContent = `${minutesAsDate.toLocaleTimeString("de", { minute: "2-digit", second: "2-digit" })}`;
-      minutesAsDate = new Date(minutesAsDate - 1000);
       minutes = minutes - 1000;
       if (minutes >= 0) {
         return;
